@@ -41,12 +41,12 @@
          show(wonView);
      } else {
          // Reduce chances
-         chancesRemaining--;
+       // Decrement chances by 1;
  
-         if (chancesRemaining >0){
-             hide(passwordView);
-             show(lostView);
-             lostMessage.innerHTML = `Wrong code! Try again. (${chancesRemaining} chances left)`;
+         if (chancesRemaining > 1) {
+
+            chancesRemaining--;
+            instructionLabel.innerHTML = `You have ${chancesRemaining} chances left`;
          } else {
              // Out of chances = Game Over
              hide(passwordView);
@@ -56,12 +56,12 @@
          }
      }
  }
- 
+
  // Refresh to reset game
  function resetGame() {
      location.reload(); // Reload page to reset everything
  }
- 
+
  checkButton.addEventListener("click", checkCode);
  tryAgainButton.addEventListener("click", resetGame);
  
